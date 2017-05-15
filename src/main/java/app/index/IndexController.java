@@ -10,6 +10,7 @@ public class IndexController {
         Map<String, Object> model = new HashMap<>();
         model.put("users", userDao.getAllUserNames());
         model.put("book", bookDao.getRandomBook());
+        model.put("docs", documentDao.getAllDocuments());
         return ViewUtil.render(request, model, Path.Template.INDEX);
     };
 }

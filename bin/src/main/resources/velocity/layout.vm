@@ -22,7 +22,6 @@
         </ul>
         <ul id="menu">
             <li><a href="$WebPath.getBOOKS()">$msg.get("COMMON_NAV_ALLBOOKS")</a></li>
-            <li><a href="$WebPath.getDOCUMENTS()">$msg.get("COMMON_NAV_ALLDOCS")</a></li>
             #if($currentUser)
                 <li>
                     <form method="post" action="$WebPath.getLOGOUT()">
@@ -37,7 +36,6 @@
 </header>
 <main>
     <div id="content">
-	
         $bodyContent
     </div>
 </main>

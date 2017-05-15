@@ -1,10 +1,20 @@
 package app.login;
 
-import app.user.*;
-import app.util.*;
-import spark.*;
-import java.util.*;
-import static app.util.RequestUtil.*;
+import static app.util.RequestUtil.getQueryLoginRedirect;
+import static app.util.RequestUtil.getQueryPassword;
+import static app.util.RequestUtil.getQueryUsername;
+import static app.util.RequestUtil.removeSessionAttrLoggedOut;
+import static app.util.RequestUtil.removeSessionAttrLoginRedirect;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import app.user.UserController;
+import app.util.Path;
+import app.util.ViewUtil;
+import spark.Request;
+import spark.Response;
+import spark.Route;
 
 public class LoginController {
 

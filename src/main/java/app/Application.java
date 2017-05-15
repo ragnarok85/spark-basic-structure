@@ -1,27 +1,44 @@
 package app;
 
-import app.book.*;
-import app.index.*;
-import app.login.*;
-import app.user.*;
-import app.util.*;
-import static spark.Spark.*;
-import static spark.debug.DebugScreen.*;
+import static spark.Spark.after;
+import static spark.Spark.before;
+import static spark.Spark.get;
+import static spark.Spark.port;
+import static spark.Spark.post;
+import static spark.Spark.staticFiles;
+import static spark.debug.DebugScreen.enableDebugScreen;
+
+import app.book.BookController;
+import app.book.BookDao;
+import app.doc.DocumentController;
+import app.doc.DocumentDAO;
+import app.index.IndexController;
+import app.login.LoginController;
+import app.triples.TripleController;
+import app.triples.TripleDAO;
+import app.user.UserDao;
+import app.util.Filters;
+import app.util.Path;
+import app.util.ViewUtil;
 
 public class Application {
 
     // Declare dependencies
     public static BookDao bookDao;
     public static UserDao userDao;
+    public static DocumentDAO documentDao;
+    public static TripleDAO tripleDao;
 
     public static void main(String[] args) {
 
         // Instantiate your dependencies
         bookDao = new BookDao();
         userDao = new UserDao();
-
+        documentDao = new DocumentDAO();
+        tripleDao = new TripleDAO();
+        
         // Configure Spark
-        port(4567);
+        port(4568);
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
         enableDebugScreen();
@@ -35,8 +52,11 @@ public class Application {
         get(Path.Web.BOOKS,          BookController.fetchAllBooks);
         get(Path.Web.ONE_BOOK,       BookController.fetchOneBook);
         get(Path.Web.LOGIN,          LoginController.serveLoginPage);
+        get(Path.Web.DOCUMENTS,	 	 DocumentController.fetchAllDocuments);
+        get(Path.Web.TRIPLES,		 TripleController.fetchAllTriples);
         post(Path.Web.LOGIN,         LoginController.handleLoginPost);
         post(Path.Web.LOGOUT,        LoginController.handleLogoutPost);
+        
         get("*",                     ViewUtil.notFound);
 
         //Set up after-filters (called after each get/post)

@@ -1,14 +1,6 @@
 #parse("/velocity/layout.vm")
 #@mainLayout()
 <h1>$msg.get("BOOKS_HEADING_ALL")</h1>
-
-<div id="myButton">
-	<select>
-			#foreach($book in $books)
-	  		<option value="$book.getTitle()">$book.getTitle()</option>
-	  		#end
-		</select>
-</div>
 <div class="row row-3">
     #foreach($book in $books)
         <div class="col">

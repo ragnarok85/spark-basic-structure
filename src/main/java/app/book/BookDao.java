@@ -1,7 +1,10 @@
 package app.book;
 
-import com.google.common.collect.*;
-import java.util.*;
+import java.util.List;
+import java.util.Random;
+import app.book.Book;
+
+import com.google.common.collect.ImmutableList;
 
 public class BookDao {
 

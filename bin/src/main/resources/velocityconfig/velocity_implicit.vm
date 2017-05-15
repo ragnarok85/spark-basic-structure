@@ -9,9 +9,3 @@
 #* @vtlvariable name="authenticationFailed" type="java.lang.String" *#
 #* @vtlvariable name="authenticationSucceeded" type="java.lang.String" *#
 #* @vtlvariable name="loginRedirect" type="java.lang.String" *#
-#* @vtlvariable name="doc" type="app.doc.Document" *#
-#* @vtlvariable name="docs" type="java.lang.Iterable<app.doc.Document>" *#
-#* @vtlvariable name="triples" type="java.lang.Iterable<app.triples.Triple>" *#
-#* @vtlvariable name="triple" type="app.triples.Triple" *#
-#* @vtlvariable name="tripleController" type="app.triples.TripleController" *#
-

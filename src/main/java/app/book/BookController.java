@@ -15,6 +15,7 @@ public class BookController {
         if (clientAcceptsHtml(request)) {
             HashMap<String, Object> model = new HashMap<>();
             model.put("books", bookDao.getAllBooks());
+            System.out.println("Entro books");
             return ViewUtil.render(request, model, Path.Template.BOOKS_ALL);
         }
         if (clientAcceptsJson(request)) {
