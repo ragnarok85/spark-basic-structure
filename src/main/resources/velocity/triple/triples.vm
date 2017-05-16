@@ -10,6 +10,37 @@ Document name:
 	  		<option id="documents" name="documents" value="$doc.getDocName()">$doc.getDocName()</a></option>
 	  		#end
 	</select>
+	
+	<table>
+    <tr>
+    	<th>Correct?</th>
+        <th>Incorrect?</th>
+        <th>#</th>
+        <th>Org. Sentence</th>
+        <th>Subject</th>
+        <th>Predicate</th>
+        <th>Object</th>
+    </tr>
+#foreach($sentence in $sentences)
+	<tr>
+		<td rowspan="$sentence.getSizeTriples()"><input type="checkbox" name=“correct" value=“correct”></td>
+        <td rowspan="$sentence.getSizeTriples()"><input type="checkbox" name=“incorrect" value=“incorrect”></td>
+		<td rowspan="$sentence.getSizeTriples()">$sentence.getNumSnt()</td>
+		<td rowspan="$sentence.getSizeTriples()">$sentence.getOrgSnt()</td>
+	</tr>
+		#foreach($triple in $sentence.getTriples())
+			<tr>
+		        <td>$triple.getSbj()</td>
+		        <td>$triple.getPred()</td>
+		        <td>$triple.getObj()</td>
+	        </tr>
+	  #end
+		
+
+	
+#end
+</table>
+	
 	<br><br>
    <input type="submit" value="Submit">
 </div>

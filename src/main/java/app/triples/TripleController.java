@@ -18,12 +18,13 @@ import spark.Route;
 
 public class TripleController {
 	
-	public static Route fetchAllTriples = (Request request, Response response) -> {
+	public static Route fetchAllTriplesPost = (Request request, Response response) -> {
+		System.out.println("entro TripleController");
 		LoginController.ensureUserIsLoggedIn(request, response);
         if (clientAcceptsHtml(request)) {
             HashMap<String, Object> model = new HashMap<>();
-            System.out.println("getParamDocument: " + request.attribute("documents"));
-            model.put("triples", tripleDao.getAllTriples(getParamDocument(request)));
+            System.out.println("getParamDocument: " + getParamDocument(request));
+            model.put("sentences", tripleDao.getAllTriples(getParamDocument(request)));
             model.put("docs", documentDao.getAllDocuments());
             return ViewUtil.render(request, model, Path.Template.TRIPLES_ALL);
         }

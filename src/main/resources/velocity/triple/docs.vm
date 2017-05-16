@@ -2,17 +2,19 @@
 #@mainLayout()
 <h1>$msg.get("BOOKS_HEADING_ALL")</h1>
 
-<form action="$WebPath.getTRIPLES()">
 <div id="myButton">
+<form method="post" action="$WebPath.getTRIPLES()">
+
 Document name: 
-	<select>
+	<select id="docName" name="docName">
 			#foreach($doc in $docs)
-	  		<option id="documents" name="documents" value="$doc.getDocName()">$doc.getDocName()</a></option>
+	  		<option value="$doc.getDocName()">$doc.getDocName()</option>
 	  		#end
 	</select>
 	<br><br>
    <input type="submit" value="Submit">
-</div>
 </form>
+</div>
+
 
 #end

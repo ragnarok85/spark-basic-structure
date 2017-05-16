@@ -53,7 +53,7 @@ public class Application {
         get(Path.Web.ONE_BOOK,       BookController.fetchOneBook);
         get(Path.Web.LOGIN,          LoginController.serveLoginPage);
         get(Path.Web.DOCUMENTS,	 	 DocumentController.fetchAllDocuments);
-        get(Path.Web.TRIPLES,		 TripleController.fetchAllTriples);
+        post(Path.Web.TRIPLES,		 TripleController.fetchAllTriplesPost);
         post(Path.Web.LOGIN,         LoginController.handleLoginPost);
         post(Path.Web.LOGOUT,        LoginController.handleLogoutPost);
         

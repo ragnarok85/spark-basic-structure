@@ -13,7 +13,7 @@ public class RequestUtil {
     }
     
     public static String getParamDocument(Request request){
-    	return request.params("documents");
+    	return request.queryParams("docName");
     }
 
     public static String getQueryUsername(Request request) {

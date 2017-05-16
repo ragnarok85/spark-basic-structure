@@ -16,8 +16,8 @@ public class TripleDAO {
 	
 //	public static List<Triple> triples = new ArrayList<Triple>();
 	//document  = <http://tamps.cinvestav.mx/rdf/graph/programmer.txt.rdf>
-	public static List<Triple> getAllTriples(String document){
-		List<Triple> triples = new ArrayList<Triple>();
+	public static List<Sentence> getAllTriples(String document){
+		List<Sentence> sentences = new ArrayList<Sentence>();
 		String service = "http://127.0.0.1:3030/ComputerScience/sparql";
 		String queryString = "SELECT ?snt ?s ?pred ?obj WHERE{"
 				+ " ?s <http://tamps.cinvestav.mx/rdf/#inDoc> <http://tamps.cinvestav.mx/rdf/graph/"+document+".txt.rdf> ."
@@ -31,7 +31,7 @@ public class TripleDAO {
 			ResultSet results = qexec.execSelect();
 			int counter = 0;
 			for( ; results.hasNext() ;){
-				Triple triple = new Triple();
+				
 				QuerySolution soln = results.nextSolution();
 
 				String orgSentence = soln.get("?snt").toString();
@@ -39,18 +39,38 @@ public class TripleDAO {
 				String predicate = soln.get("?pred").toString();
 				String object = soln.get("?obj").toString();
 				
-				triple.setOrgSnt(orgSentence);
-				triple.setSbj(subject);
-				triple.setPred(predicate);
-				triple.setObj(object);
-				triple.setNumSnt(++counter);
+				Sentence existsSentence = null;
+				for(Sentence sentence : sentences){
+					if(sentence.getOrgSnt().equals(orgSentence)){
+						existsSentence = sentence;
+						break;
+					}
+				}
 				
-				triples.add(triple);
+				if(existsSentence == null){
+					Sentence snt = new Sentence();
+					snt.setOrgSnt(orgSentence);
+					snt.setNumSnt(++counter);
+					Triple triple = new Triple();
+					triple.setSbj(subject);
+					triple.setPred(predicate);
+					triple.setObj(object);
+					triple.setNumSnt(++counter);
+					snt.getTriples().add(triple);
+					sentences.add(snt);
+				}else{
+					Triple triple = new Triple();
+					triple.setSbj(subject);
+					triple.setPred(predicate);
+					triple.setObj(object);
+					triple.setNumSnt(++counter);
+					existsSentence.getTriples().add(triple);
+				}
+				
 			}
 		}
-		
 				
-		return triples;
+		return sentences;
 	}
 	
 	
