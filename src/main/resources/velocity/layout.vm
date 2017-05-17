@@ -10,7 +10,7 @@
 <header>
     <nav>
         <a href="$WebPath.getINDEX()"><img id="logo" src="/img/logo.png" alt="Spark Library"></a>
-        <ul id="chooseLanguage">
+        <!--<ul id="chooseLanguage">
             <form>
                 <li>
                     <button name="locale" value="de" style="background-image: url(/img/german.png);"></button>
@@ -19,11 +19,11 @@
                     <button name="locale" value="en" style="background-image: url(/img/english.png);"></button>
                 </li>
             </form>
-        </ul>
+        </ul>-->
         <ul id="menu">
-            <li><a href="$WebPath.getBOOKS()">$msg.get("COMMON_NAV_ALLBOOKS")</a></li>
+            <!--<li><a href="$WebPath.getBOOKS()">$msg.get("COMMON_NAV_ALLBOOKS")</a></li>-->
             <li><a href="$WebPath.getDOCUMENTS()">$msg.get("COMMON_NAV_ALLDOCS")</a></li>
-            #if($currentUser)
+            <!--#if($currentUser)
                 <li>
                     <form method="post" action="$WebPath.getLOGOUT()">
                         <button id="logout">$msg.get("COMMON_NAV_LOGOUT")</button>
@@ -31,13 +31,12 @@
                 </li>
             #else
                 <li><a href="$WebPath.getLOGIN()"">$msg.get("COMMON_NAV_LOGIN")</a></li>
-            #end
+            #end-->
         </ul>
     </nav>
 </header>
 <main>
     <div id="content">
-	
         $bodyContent
     </div>
 </main>

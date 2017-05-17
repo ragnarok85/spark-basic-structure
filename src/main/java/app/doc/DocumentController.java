@@ -17,9 +17,8 @@ import spark.Route;
 public class DocumentController {
 	
 	public static Route fetchAllDocuments = (Request request, Response response) -> {
-		LoginController.ensureUserIsLoggedIn(request, response);
+//		LoginController.ensureUserIsLoggedIn(request, response);
         if (clientAcceptsHtml(request)) {
-        	System.out.println("entro");
             HashMap<String, Object> model = new HashMap<>();
             model.put("docs", documentDao.getAllDocuments());
             return ViewUtil.render(request, model, Path.Template.DOCS_ALL);

@@ -49,13 +49,13 @@ public class Application {
 
         // Set up routes
         get(Path.Web.INDEX,          IndexController.serveIndexPage);
-        get(Path.Web.BOOKS,          BookController.fetchAllBooks);
-        get(Path.Web.ONE_BOOK,       BookController.fetchOneBook);
-        get(Path.Web.LOGIN,          LoginController.serveLoginPage);
+//        get(Path.Web.BOOKS,          BookController.fetchAllBooks);
+//        get(Path.Web.ONE_BOOK,       BookController.fetchOneBook);
+//        get(Path.Web.LOGIN,          LoginController.serveLoginPage);
         get(Path.Web.DOCUMENTS,	 	 DocumentController.fetchAllDocuments);
         post(Path.Web.TRIPLES,		 TripleController.fetchAllTriplesPost);
-        post(Path.Web.LOGIN,         LoginController.handleLoginPost);
-        post(Path.Web.LOGOUT,        LoginController.handleLogoutPost);
+//        post(Path.Web.LOGIN,         LoginController.handleLoginPost);
+//        post(Path.Web.LOGOUT,        LoginController.handleLogoutPost);
         
         get("*",                     ViewUtil.notFound);
 

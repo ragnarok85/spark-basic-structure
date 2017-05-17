@@ -7,6 +7,7 @@ public class Triple {
 	String sbj;
 	String pred;
 	String obj;
+	String topic;
 
 	
 	public int getNumSnt() {
@@ -38,5 +39,11 @@ public class Triple {
 	}
 	public void setObj(String obj) {
 		this.obj = obj;
+	}
+	public String getTopic() {
+		return topic;
+	}
+	public void setTopic(String topic) {
+		this.topic = topic;
 	}
 }
