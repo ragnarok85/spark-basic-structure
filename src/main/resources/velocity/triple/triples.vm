@@ -3,25 +3,27 @@
 <h1>$msg.get("TRIPLES_HEADING_EVALUATE")</h1>
 <div>
 	<form method="post" action="$WebPath.getEVALUATION()">
-		<p>Document name:<h2>$docName</h2></p>
-		
+		<p>Document name:<h2>$docNames</h2></p>
+		#set($cntName = 0)
 		#foreach($sentence in $sentences)
 			<p>Sentence $sentence.getNumSnt(): $sentence.getOrgSnt()</p>
 			<div style="overflow-x:auto;">
 				<table>
 	    			<tr>
 				    	<th>Correct?</th>
-				        <th>Incorrect?</th>
+				        <!--<th>Incorrect?</th>-->
 				        <th>Topic</th>
 				        <th>Subject</th>
 				        <th>Predicate</th>
 				        <th>Object</th>
 				    </tr>
 					<tr>
+						#set($cntName = $cntName + 1)
 						
-						<td rowspan="$sentence.getSizeTriples()"><input type="checkbox" id="correct" name="correct" value="$correct.addCorrect()"></td>
-						
-				        <td rowspan="$sentence.getSizeTriples()"><input type="checkbox" id="incorrect" name="incorrect" value="$correct.addIncorrect()"></td>
+						<td rowspan="$sentence.getSizeTriples()"><input type="checkbox"  onclick="handleClick(this)" id="correct$cntName" name="correct$cntName" value="$correct.addCorrect()">
+						<br>
+						<button type="button" onclick="changeOfMind(this)" id="correct$cntName" name="correct$cntName">Changes of mind?</button> </td>
+				       <!-- <td rowspan="$sentence.getSizeTriples()"><input type="checkbox" id="incorrect" name="incorrect" value="$correct.addIncorrect()"></td>-->
 					</tr>
 					#foreach($triple in $sentence.getTriples())
 						<tr>
@@ -38,7 +40,34 @@
 	 		</div>
 		#end
 		<br>
-   		<input type="submit" value="Submit">
+		<input type="number" name="counter" id="counter"  hidden>
+		<input type="number" name="total" id="total" value="$cntName" hidden>
+   		<input type="submit" value="Submit" id="submit">
 	</form>
 </div>
+
+<script type="text/javascript">
+
+var counter = 0;
+
+function handleClick(cb) {
+  if(cb.checked){
+    	counter++;
+        document.activeElement.disabled = true;
+        document.getElementById("counter").value = counter;
+        return counter;
+    }
+}
+
+function changeOfMind(cm){
+	if(document.getElementById(cm.id).checked){
+    	counter--;
+        document.getElementById(cm.id).disabled = false;
+        document.getElementById(cm.id).checked = false;
+        document.getElementById("counter").value = counter;
+        //  alert("The value of counter is = " +  document.getElementById("counter").value);
+        return counter;
+    }
+}
+</script>
 #end

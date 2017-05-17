@@ -8,8 +8,8 @@ public class Checkboxes {
 	public int getCorrect() {
 		return correct;
 	}
-	public void setCorrect(int correct) {
-		this.correct = correct;
+	public void setCorrect(String correct) {
+		this.correct = Integer.parseInt(correct);
 	}
 	public int getIncorrect() {
 		return incorrect;

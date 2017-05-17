@@ -13,11 +13,15 @@ public class RequestUtil {
     }
     
     public static String getParamDocument(Request request){
-    	return request.queryParams("docName");
+    	return request.queryParams("docNames");
     }
     
     public static String getParamBoxes(Request request){
-    	return request.queryParams("correct");
+    	return request.queryParams("counter");
+    }
+    
+    public static String getTotalBoxes(Request request){
+    	return request.queryParams("total");
     }
 
     public static String getQueryUsername(Request request) {

@@ -5,7 +5,7 @@
 <div>
 	<form method="post" action="$WebPath.getTRIPLES()">
 		<p>Document name:</p> 
-		<select id="docName" name="docName">
+		<select id="docNames" name="docNames">
 			#foreach($doc in $docs)
 	  			<option value="$doc.getDocName()">$doc.getDocName()</option>
 	  		#end

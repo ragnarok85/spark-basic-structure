@@ -24,7 +24,8 @@ public class TripleController {
         if (clientAcceptsHtml(request)) {
             HashMap<String, Object> model = new HashMap<>();
             model.put("sentences", tripleDao.getAllTriples(getParamDocument(request)));
-            model.put("docName", getParamDocument(request));
+            System.out.println(" params() = " +  request.params() + " attributes = " + request.attributes() + " queryParams = " + request.queryParams());
+            model.put("docNames", getParamDocument(request));
             model.put("correct", new Checkboxes());
             return ViewUtil.render(request, model, Path.Template.TRIPLES_ALL);
         }
@@ -33,6 +34,4 @@ public class TripleController {
         }
         return ViewUtil.notAcceptable.handle(request, response);
     };
-	
-	
 }

@@ -5,6 +5,7 @@ import static app.util.JsonUtil.dataToJson;
 import static app.util.RequestUtil.clientAcceptsHtml;
 import static app.util.RequestUtil.clientAcceptsJson;
 import static app.util.RequestUtil.getParamBoxes;
+import static app.util.RequestUtil.getTotalBoxes;
 
 import java.util.HashMap;
 
@@ -23,7 +24,9 @@ public class EvaluationController {
         if (clientAcceptsHtml(request)) {
             HashMap<String, Object> model = new HashMap<>();
             String boxes = getParamBoxes(request);
-            System.out.println("boxes = " + boxes + "  request = " + request.body());
+            String total = getTotalBoxes(request);
+            System.out.println("Total Boxes = " + boxes + " accerted = " + total + " div = " + (Double.parseDouble(boxes)/Double.parseDouble(total)));
+            System.out.println("accerted = " + boxes + "  requestQueryParams = " + request.queryParams() + " requestParams= " + request.params() + " requestAttributes= " + request.attributes() );
             model.put("docs", documentDao.getAllDocuments());
             return ViewUtil.render(request, model, Path.Template.DOCS_ALL);
         }
