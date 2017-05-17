@@ -13,6 +13,7 @@ public class Path {
         public static final String DOCUMENTS = "/docs/";
 //        public static final String TRIPLES = "/triples/:docName/";
         public static final String TRIPLES = "/triples/";
+        public static final String EVALUATION = "/evaluation/";
 		
         public static String getINDEX() {
 			return INDEX;
@@ -41,6 +42,10 @@ public class Path {
 		public static String getTRIPLES() {
 			return TRIPLES;
 		}
+
+		public static String getEVALUATION() {
+			return EVALUATION;
+		}
         
     }
 
@@ -52,6 +57,7 @@ public class Path {
         public static final String BOOKS_ONE = "/velocity/book/one.vm";
         public static final String NOT_FOUND = "/velocity/notFound.vm";
         public static final String TRIPLES_ALL = "/velocity/triple/triples.vm";
+        public static final String EVALUATION_ALL = "/velocity/evaluation/evaluation.vm";
     }
 
 }

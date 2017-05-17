@@ -21,11 +21,12 @@ public class TripleDAO {
 		List<Sentence> sentences = new ArrayList<Sentence>();
 		String service = "http://127.0.0.1:3030/ComputerScience/sparql";
 		String queryString = "SELECT ?snt ?s ?pred ?obj ?topic WHERE{"
-				+ "<http://tamps.cinvestav.mx/rdf/graph/"+document+".txt.rdf> <http://tamps.cinvestav.mx/rdf/property/topic> ?topic."
 				+ " ?s <http://tamps.cinvestav.mx/rdf/#inDoc> <http://tamps.cinvestav.mx/rdf/graph/"+document+".txt.rdf> ."
+				+ "<http://tamps.cinvestav.mx/rdf/graph/"+document+".txt.rdf> <http://tamps.cinvestav.mx/rdf/property/alchemy/topic> ?topic."
 				+ "?obj <http://tamps.cinvestav.mx/rdf/#inDoc> <http://tamps.cinvestav.mx/rdf/graph/"+document+".txt.rdf> ."
 				+ " ?s <http://tamps.cinvestav.mx/rdf/#inSentence> ?snt . "
-				+ "?obj <http://tamps.cinvestav.mx/rdf/#inSentence> ?snt ."
+				+ " <http://tamps.cinvestav.mx/rdf/graph/"+document+".txt.rdf> <http://tamps.cinvestav.mx/rdf/property/sentence> ?docSnt"
+				+ " FILTER (?snt = ?docSnt)"
 				+ " ?s ?pred ?obj."
 				+ " FILTER (?pred != <http://tamps.cinvestav.mx/rdf/#inDoc> && ?pred != <http://tamps.cinvestav.mx/#semanticSimilarTo>"
 				+ " && ?pred != <http://tamps.cinvestav.mx/rdf/#inSentence>)"

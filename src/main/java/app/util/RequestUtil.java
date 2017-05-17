@@ -15,6 +15,10 @@ public class RequestUtil {
     public static String getParamDocument(Request request){
     	return request.queryParams("docName");
     }
+    
+    public static String getParamBoxes(Request request){
+    	return request.queryParams("correct");
+    }
 
     public static String getQueryUsername(Request request) {
         return request.queryParams("username");

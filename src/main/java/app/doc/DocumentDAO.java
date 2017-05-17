@@ -16,7 +16,7 @@ public class DocumentDAO {
 	
 	public static List<Document> getAllDocuments(){
 		List<Document> documents = new ArrayList<Document>();
-		String service = "http://127.0.0.1:3030/ComputerScience/sparql";
+		String service = "http://127.0.0.1:3030/ComputerScience/query";
 		String queryString ="SELECT DISTINCT ?sDoc"
 				+ " WHERE { "
 				+ " ?s <http://tamps.cinvestav.mx/rdf/#inDoc> ?sDoc "

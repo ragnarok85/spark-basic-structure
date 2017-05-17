@@ -8,12 +8,11 @@ import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
-import app.book.BookController;
 import app.book.BookDao;
 import app.doc.DocumentController;
 import app.doc.DocumentDAO;
+import app.evaluation.EvaluationController;
 import app.index.IndexController;
-import app.login.LoginController;
 import app.triples.TripleController;
 import app.triples.TripleDAO;
 import app.user.UserDao;
@@ -54,6 +53,7 @@ public class Application {
 //        get(Path.Web.LOGIN,          LoginController.serveLoginPage);
         get(Path.Web.DOCUMENTS,	 	 DocumentController.fetchAllDocuments);
         post(Path.Web.TRIPLES,		 TripleController.fetchAllTriplesPost);
+        post(Path.Web.EVALUATION,		 EvaluationController.fetchAllDocuments);
 //        post(Path.Web.LOGIN,         LoginController.handleLoginPost);
 //        post(Path.Web.LOGOUT,        LoginController.handleLogoutPost);
         

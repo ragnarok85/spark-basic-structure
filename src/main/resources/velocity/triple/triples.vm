@@ -2,7 +2,7 @@
 #@mainLayout()
 <h1>$msg.get("TRIPLES_HEADING_EVALUATE")</h1>
 <div>
-	<form>
+	<form method="post" action="$WebPath.getEVALUATION()">
 		<p>Document name:<h2>$docName</h2></p>
 		
 		#foreach($sentence in $sentences)
@@ -18,8 +18,10 @@
 				        <th>Object</th>
 				    </tr>
 					<tr>
-						<td rowspan="$sentence.getSizeTriples()"><input type="checkbox" name=“correct" value=“correct”></td>
-				        <td rowspan="$sentence.getSizeTriples()"><input type="checkbox" name=“incorrect" value=“incorrect”></td>
+						
+						<td rowspan="$sentence.getSizeTriples()"><input type="checkbox" id="correct" name="correct" value="$correct.addCorrect()"></td>
+						
+				        <td rowspan="$sentence.getSizeTriples()"><input type="checkbox" id="incorrect" name="incorrect" value="$correct.addIncorrect()"></td>
 					</tr>
 					#foreach($triple in $sentence.getTriples())
 						<tr>

@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import app.doc.DocumentDAO;
 import app.login.LoginController;
+import app.util.Checkboxes;
 import app.util.Path;
 import app.util.ViewUtil;
 import spark.Request;
@@ -24,6 +25,7 @@ public class TripleController {
             HashMap<String, Object> model = new HashMap<>();
             model.put("sentences", tripleDao.getAllTriples(getParamDocument(request)));
             model.put("docName", getParamDocument(request));
+            model.put("correct", new Checkboxes());
             return ViewUtil.render(request, model, Path.Template.TRIPLES_ALL);
         }
         if (clientAcceptsJson(request)) {

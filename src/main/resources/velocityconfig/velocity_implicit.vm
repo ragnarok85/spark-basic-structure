@@ -16,3 +16,4 @@
 #* @vtlvariable name="tripleController" type="app.triples.TripleController" *#
 #* @vtlvariable name="sentence" type="app.triples.Sentence" *#
 #* @vtlvariable name="sentences" type="java.lang.Iterable<app.triples.Sentence>" *#
+#* @vtlvariable name="correct" type="app.util.Checkboxes" *#

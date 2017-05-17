@@ -1,0 +1,17 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<h1>$msg.get("DOCS_HEADING_SELECT")</h1>
+
+<div>
+	<form method="post" action="$WebPath.getTRIPLES()">
+		<p>Document name:</p> 
+		<select id="docName" name="docName">
+			#foreach($doc in $docs)
+	  			<option value="$doc.getDocName()">$doc.getDocName()</option>
+	  		#end
+		</select>
+		<br>
+   		<input type="submit" value="Submit">
+	</form>
+</div>
+#end
